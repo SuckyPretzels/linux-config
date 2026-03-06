@@ -1,0 +1,27 @@
+;; (set-cursor-color (face-foreground 'default))
+
+(require 'package)
+;; Any add to list for package-archives (to add marmalade or melpa) goes here
+(add-to-list 'package-archives 
+    '("MELPA" .
+      "http://melpa.org/packages/"))
+(package-initialize)
+
+
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(custom-safe-themes
+   '("533c4cd0c5d6a59044c6aa8ee0a5f0bb774b0eb7dd41cd5785e509b00c0dd3c7" "21407f02605b88424431a046af059edf4f4a06ad19ab6940ce7d9d73d796eb10" "ff27ea3f39e5185b5afa3d1cf0fa7623815bde98f7aa70a1f5476fbcf3a210da" "ce36b7bd85d0b32939aacbef5b775c14de8fdd952da28d92f86f8e4596364e77" "0092c98eb5e0ded3e280f52e235ee32afff2b677a3eb86fedf457741c4af2966" "74bd1a6e80312795ac2d48f0d71d3d29fcd5f618756f7576d9e512add27d32dc" "8fc3d84052fec263eecaea1507605d4434920c8d1f3512cd37ad0fc0a6fa5652" "e876e5d8a49ca5726baf6d326452432426a978b19c47382a14413a88c1f56e99" "a2f1ac8f8e56ca3ee7ebed927badcbfe3a0fb4c7cc1a6b9a68300c88c70b68ce" "10058247f4f24143448aa259326ac43fa0e947eb2680dcc5e91dcb538fe4db3a" "be4e08f6f62788357741a1a2974fbb013029bbefd9692596af22560c69c06356" "b38187d29a6fcff74ac016dc941c57184dba1a32da461eb2d87901928383532d" default))
+ '(display-line-numbers 'relative)
+ '(package-selected-packages
+   '(vterm embark-consult bash-completion consult embark autothemer base16-theme tokyonight-themes dired-preview aggressive-completion)))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )
+

@@ -1,0 +1,17 @@
+(require 'autothemer)
+
+(autothemer-deftheme
+ my-tokyo-night-moon "my custom version of base16-tokyo-night-moon-theme"
+
+ ((((class-color) (min-colors #xFFFFFF))) ;; only care about graphical Emacs
+
+  ;; Define our color palette
+  (tokyo-black)
+  (tokyo-white)
+  (tokyo-orange)
+
+  ;; Customize faces
+  ((default (:foreground tokyo-white :background tokyo-black))
+   (cursor (:background tokyo-orange))))
+
+ (provide-theme 'my-tokyo-night-moon)
