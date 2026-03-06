@@ -42,11 +42,17 @@
 
 (global-set-key (kbd "C-M-SPC") 'global-arrow-mode)
 
-(defun my-arrow-minibuffer-setup ()
+(defun my-arrow-minibuffer-setup()
   (arrow-mode -1)
   (local-set-key (kbd "C-M-SPC") 'arrow-mode))
 
 (add-hook 'minibuffer-setup-hook #'my-arrow-minibuffer-setup)
+
+(defun my-arrow-vterm-setup()
+  (arrow-mode -1)
+  (local-set-key (kbd "C-M-SPC") 'arrow-mode))
+
+(add-hook 'vterm-mode-hook #'my-arrow-vterm-setup)
 
 ;; Key rebinds
 (global-set-key (kbd "C-c C-c") 'eval-buffer)
