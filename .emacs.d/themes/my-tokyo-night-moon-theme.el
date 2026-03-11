@@ -18,7 +18,9 @@
  ((default                          (:foreground gainsboro))
   (font-lock-comment-face           (:foreground dark-gray))
   (font-lock-comment-delimiter-face (:foreground dark-gray))
-  (font-lock-doc-face               (:foreground dark-gray))))
+  (font-lock-doc-face               (:foreground dark-gray))
+  (shadow                           (:foreground "#6272a4"))
+  (marginalia-documentation         (:foreground "#7a8db3"))))
 
 ;; transparent background
 (when (display-graphic-p)

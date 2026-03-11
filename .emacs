@@ -1,4 +1,28 @@
 (setq debug-on-error t)
+(setq wdired-allow-to-change-permissions t)
+
+;; QoL changes
+(cua-mode t)
+(setq-default display-line-numbers-type 'relative)
+(global-display-line-numbers-mode)
+(tool-bar-mode 0)
+(scroll-bar-mode 0)
+(add-to-list 'default-frame-alist '(font . "RecMonoCasual Nerd Font"))
+(savehist-mode 1)
+
+;; Snippets
+(use-package yasnippet
+  :ensure t
+  :config (yas-global-mode 1))
+
+(use-package yasnippet-snippets
+  :ensure t
+  :after yasnippet)
+
+;; Option B: eglot (lighter, built-in since Emacs 29)
+ (use-package eglot
+   :hook ((js2-mode . eglot-ensure)
+          (typescript-mode . eglot-ensure)))
 
 ;; Separating tab from C-i
 (define-key input-decode-map [(control ?i)] [control-i])
@@ -55,46 +79,90 @@
 (add-hook 'vterm-mode-hook #'my-arrow-vterm-setup)
 
 ;; Key rebinds
-(global-set-key (kbd "C-c C-c") 'eval-buffer)
+(add-to-list 'load-path "~/.emacs.d/elpa/zoom-frm-manual/")
+(require 'zoom-frm)
 (global-unset-key (kbd "C-,"))
 (global-unset-key (kbd "C-/"))
+(global-unset-key (kbd "C--"))
+(global-unset-key (kbd "C-a"))
+(global-unset-key (kbd "C-f"))
+(global-set-key (kbd "C-c C-c") 'eval-buffer)
 (global-set-key (kbd "C-/") 'kill-whole-line)
 (global-set-key (kbd "C-,") 'backward-kill-sentence)
 (global-set-key (kbd "C-.") 'kill-line)
-(global-unset-key (kbd "C--"))
-(global-set-key (kbd "C--") 'text-scale-decrease)
-(global-set-key (kbd "C-=") 'text-scale-increase)
+(global-set-key (kbd "C--") 'zoom-in/out)
+(global-set-key (kbd "C-=") 'zoom-in/out)
+(global-set-key (kbd "C-a") 'mark-whole-buffer)
+(global-set-key (kbd "C-f") 'isearch-forward)
+(define-key isearch-mode-map (kbd "C-f") 'isearch-repeat-forward)
 
-;;auto insert stuff
+;; auto insert stuff
 (auto-insert-mode 1)
 (setq auto-insert-query nil)
 (setq auto-insert-directory
       (expand-file-name "~/programming/templates/"))
-(define-auto-insert
-  '("\\.js\\'" . "JavaScript with prompt-sync")
-  "javascript-prompt-sync.js")
+(setq auto-insert-alist
+      (assq-delete-all "\\.js\\'" auto-insert-alist))
 
-;; QoL changes
-(cua-mode t)
-(global-display-line-numbers-mode)
-(tool-bar-mode 0)
-(scroll-bar-mode 0)
-(add-to-list 'default-frame-alist '(font . "RecMonoCasual Nerd Font"))
+;; (define-auto-insert
+;;   '("\\.js\\'")
+;;   "javascript-prompt-sync.js")
+
+;; Mode replacements
+(add-to-list 'auto-mode-alist '("\\.js\\'" . js2-mode))
 
 ;; Add custom theme path
 (add-to-list 'custom-theme-load-path "~/.emacs.d/themes/")
+
+;; Setting up completion package
+
+(use-package vertico
+  :ensure t
+  :init
+  (vertico-mode))
+(use-package marginalia
+  :ensure t
+  :init
+  (marginalia-mode))
+(use-package corfu
+  :ensure t
+  :config
+  (global-corfu-mode))
+
+(electric-pair-mode 1)
+(setq electric-pair-pairs '(
+                            (?\{ . ?\})
+                            (?\( . ?\))
+                            (?\[ . ?\])
+                            (?\" . ?\")
+                            ))
+(add-hook 'js2-mode-hook
+          (lambda ()
+            (define-key js2-mode-map "{" #'electric-pair-open-newline-between-pairs-sun)
+            (electric-indent-mode 1)))  ; Ensures proper indentation on newline
+
+(setq completion-styles '(orderless basic))
+
+;; Vterm things
+(use-package vterm
+  :ensure t
+  :config
+  (setq vterm-max-scrollback 10000)
+  (setq vterm-timer-delay 0.01))
 
 ;; Load autothemer
 (use-package autothemer
   :ensure t)
 
 ;; Load my theme
-(use-package base16-theme
-  :ensure t
-  :config
-  (load-theme 'base16-tokyo-night-moon t))
+;(use-package base16-theme
+;  :ensure t
+;  :config
+;  (load-theme 'base16-tokyo-night-moon t))
 
-(load-theme 'my-tokyo-night-moon t)
+;; (load-theme 'my-tokyo-night-moon t)
+
+(load-theme 'Shion-Valorheart)
 
 ;; Prevent Customize from writing to ~/.emacs
 (setq custom-file (expand-file-name ".emacs.custom.el" user-emacs-directory))

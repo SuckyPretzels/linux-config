@@ -12,3 +12,8 @@ cdl() {
      cd "$1"
      ls -laF
 }
+
+# short for .config
+c() {
+    cd ~/.config/"$@"
+}

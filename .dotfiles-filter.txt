@@ -1,0 +1,50 @@
+# dotfiles filter
+
+# Exclude backup / temporary files (good practice)
+- *~
+- *#
+- *.bak
+- *.swp
+- *.swo
+
+# Top-level dotfiles (files directly in ~)
++ /.bashrc
++ /.bash_aliases
++ /.bash_functions
++ /.nanorc
++ /.face
++ /.profile
++ /.emacs
++ /.dotfiles-filter.txt
++ /test.txt
+
+# Selected .config subfolders + files
++ /.config/
++ /.config/kitty/
++ /.config/kitty/***
++ /.config/fastfetch/
++ /.config/fastfetch/***
++ /.config/flameshot/
++ /.config/flameshot/***
++ /.config/starship.toml
++ /.config/nerd-font-symbols.toml
+
+# Emacs directory
+- /.emacs.d/elpa/
+- /.emacs.d/elpa/***
+- /.emacs.d/eln-cache/
+- /.emacs.d/eln-cache/***
++ /.emacs.d/
++ /.emacs.d/***
+
+# Fonts
++ /.fonts/
++ /.fonts/***
+
+# Local bin scripts
++ /.local/
++ /.local/bin/
++ /.local/bin/***
+
+# Final rule: exclude everything else not matched above
+- *

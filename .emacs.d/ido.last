@@ -1,0 +1,37 @@
+;;; -*- coding: utf-8 -*-
+
+;; ----- ido-last-directory-list -----
+(
+ ("/home/pretzels/Documents/" . "bandit/")
+ ("/home/" . "pretzels/")
+ ("/" . "home/")
+ ("/home/pretzels/" . "Documents/")
+)
+
+;; ----- ido-work-directory-list -----
+(
+ "/home/pretzels/Documents/"
+)
+
+;; ----- ido-work-file-list -----
+(
+ "dates.txt"
+)
+
+;; ----- ido-dir-file-cache -----
+(
+ ("/home/pretzels/Documents/bandit/" (27034 31623 700348 859000) "1_bandit_password" "7_bandit_password" "4_bandit_password" "8_bandit_password" "2_bandit_password" "../" "11_bandit_password" "5_bandit_password" "10_bandit_password" "./" "13_bandit_password" "9_bandit_password" "6_bandit_password" "12_bandit_password" "3_bandit_password")
+
+ ("/home/pretzels/Documents/" (27048 33584 536178 229000) "dates.txt.bak2" "dates.txt.bak" "bandit/" "../" "Lista_2_Raciocínio_Lógico_Algorítmico.pdf" "./" "linux TORRADA push token" "dates.txt")
+
+ ("/home/" (27027 30298 817039 398000) "../" "./" "pretzels/")
+
+ ("/home/pretzels/Downloads/" (27046 8126 911003 917000) "../" "./")
+
+ ("/home/pretzels/" (27051 7160 527094 468000) "emacs.d/" ".Xauthority" ".lesshst" ".steampath" ".profile" "Pictures/" "hello.js~" ".#.emacs" ".bash_functions~" ".icons/" "Downloads/" ".bashrc" ".sudo_as_admin_successful" ".config/" ".bash_functions" ".emacs~" ".bash_history" ".ssh/" "reminder" "programming/" "../" ".steampid" ".gitconfig" ".bashrc.save" ".xsession-errors.old" ".dmrc" "Templates/" ".xinputrc" "Music/" ".presage/" ".wget-hsts" ".gtkrc-xfce" ".linuxmint/" ".face" ".bash_aliases" "pwd" ".gtkrc-2.0" ".pki/" "Videos/" ".java/" "Desktop/" "./" ".nanorc" "nerdfont.txt" ".emacs.save" ".emacs" ".themes/" ".dbus/" ".fonts/" ".npm/" "#TUTORIAL#" "Documents/" ".local/" "Public/" ".emacs.d/" ".gnupg/" ".xsession-errors" ".steam/" ".cache/" ".bash_logout" ".ICEauthority" ".bash_aliases~" "reminder~" ".git-credentials" "hello.js" "TUTORIAL" "#.emacs#")
+
+ ("/home/pretzels/programming/" (27051 7308 764093 84000) "aula.js~" "aula.js" "#aula.js#" "../" "./" "templates/" "node_modules/" "package-lock.json" "package.json" "#aula2.js#")
+)
+
+;; ----- ido-unc-hosts-cache -----
+t
