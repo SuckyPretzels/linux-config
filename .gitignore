@@ -1,1 +1,7 @@
 .git-credentials
+.emacs.d/.tutor/
+.emacs.d/.tutor/***
+.emacs.d/init.el
+.emacs.d/my-config.el
+.emacs.d/my-evil-config.el
+.emacs.d/random-bullshit-idk.el

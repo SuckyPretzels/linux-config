@@ -8,6 +8,7 @@ alias update='sudo apt update && apt upgrade'
 alias trash='gio trash'
 alias quit='exit'
 alias reload='source ~/.bashrc'
+alias kickstart='emacs -Q -l ~/kickstart.emacs/early-init.el &'
 
 # Add an "alert" alias for long running commands. Use like so:
 #   sleep 10; alert

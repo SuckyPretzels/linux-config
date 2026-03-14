@@ -52,6 +52,7 @@
   (font-lock-constant-face    (:foreground gold))           ; Gold for constants (like metal details)
   (font-lock-type-face        (:foreground gold))
   (eglot-semantic-defaultLibrary (:foreground "#128aed"))
+  (eglot-highlight-symbol-face   (:foreground fg-dim))
   (error                      (:foreground red :weight 'bold :underline t))
   (success                    (:foreground blue-gem :weight 'bold))  ; Blue-gem only for success (rare positive accent)
   (warning                    (:foreground gold :weight 'bold))

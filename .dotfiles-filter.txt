@@ -16,7 +16,6 @@
 + /.profile
 + /.emacs
 + /.dotfiles-filter.txt
-+ /test.txt
 
 # Selected .config subfolders + files
 + /.config/
@@ -34,6 +33,14 @@
 - /.emacs.d/elpa/***
 - /.emacs.d/eln-cache/
 - /.emacs.d/eln-cache/***
+- /.emacs.d/backups/
+- /.emacs.d/backups/***
+- /.emacs.d/.tutor/
+- /.emacs.d/.tutor/***
+- /.emacs.d/auto-save-list/
+- /.emacs.d/auto-save-list/***
+- /.emacs.d/random-bullshit-idk.el
+- /.emacs.d/history
 + /.emacs.d/
 + /.emacs.d/***
 
