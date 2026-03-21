@@ -662,6 +662,71 @@ it is disabled.
 
 
 )
+(let ((load-true-file-name "/home/pretzels/.emacs.d/elpa/spinner-1.7.4/spinner-autoloads.el")(load-file-name "/home/pretzels/.emacs.d/elpa/spinner-1.7.4/spinner-autoloads.el"))
+
+
+
+(add-to-list 'load-path (or (and load-file-name (directory-file-name (file-name-directory load-file-name))) (car load-path)))
+
+
+
+
+(autoload 'spinner-create "spinner" "\
+Create a spinner of the given TYPE.
+The possible TYPEs are described in `spinner--type-to-frames'.
+
+FPS, if given, is the number of desired frames per second.
+Default is `spinner-frames-per-second'.
+
+If BUFFER-LOCAL is non-nil, the spinner will be automatically
+deactivated if the buffer is killed.  If BUFFER-LOCAL is a
+buffer, use that instead of current buffer.
+
+When started, in order to function properly, the spinner runs a
+timer which periodically calls `force-mode-line-update' in the
+current buffer.  If BUFFER-LOCAL was set at creation time, then
+`force-mode-line-update' is called in that buffer instead.  When
+the spinner is stopped, the timer is deactivated.
+
+DELAY, if given, is the number of seconds to wait after starting
+the spinner before actually displaying it. It is safe to cancel
+the spinner before this time, in which case it won't display at
+all.
+
+(fn &optional TYPE BUFFER-LOCAL FPS DELAY)")
+(autoload 'spinner-start "spinner" "\
+Start a mode-line spinner of given TYPE-OR-OBJECT.
+If TYPE-OR-OBJECT is an object created with `make-spinner',
+simply activate it.  This method is designed for minor modes, so
+they can use the spinner as part of their lighter by doing:
+    '(:eval (spinner-print THE-SPINNER))
+To stop this spinner, call `spinner-stop' on it.
+
+If TYPE-OR-OBJECT is anything else, a buffer-local spinner is
+created with this type, and it is displayed in the
+`mode-line-process' of the buffer it was created it.  Both
+TYPE-OR-OBJECT and FPS are passed to `make-spinner' (which see).
+To stop this spinner, call `spinner-stop' in the same buffer.
+
+Either way, the return value is a function which can be called
+anywhere to stop this spinner.  You can also call `spinner-stop'
+in the same buffer where the spinner was created.
+
+FPS, if given, is the number of desired frames per second.
+Default is `spinner-frames-per-second'.
+
+DELAY, if given, is the number of seconds to wait until actually
+displaying the spinner. It is safe to cancel the spinner before
+this time, in which case it won't display at all.
+
+(fn &optional TYPE-OR-OBJECT FPS DELAY)")
+(register-definition-prefixes "spinner" '("spinner-"))
+
+
+(provide 'spinner-autoloads)
+
+
+)
 (let ((load-true-file-name "/home/pretzels/.emacs.d/elpa/s-20220902.1511/s-autoloads.el")(load-file-name "/home/pretzels/.emacs.d/elpa/s-20220902.1511/s-autoloads.el"))
 
 
@@ -5359,11 +5424,96 @@ Run ‘dired-do-rename’ asynchronously.
 
 
 )
+(let ((load-true-file-name "/home/pretzels/.emacs.d/elpa/arduino-mode-20240527.1603/arduino-mode-autoloads.el")(load-file-name "/home/pretzels/.emacs.d/elpa/arduino-mode-20240527.1603/arduino-mode-autoloads.el"))
+
+
+
+(add-to-list 'load-path (or (and load-file-name (directory-file-name (file-name-directory load-file-name))) (car load-path)))
+
+
+
+
+(autoload 'arduino-sketch-new "arduino-mode" "\
+A command to create new `SKETCH' in ARDUINO_HOME (~/Arduino).
+
+(fn SKETCH)" t)
+(autoload 'arduino-mode "arduino-mode" "\
+Major mode for editing Arduino code.
+
+(fn)" t)
+(add-to-list 'auto-mode-alist '("\\.pde\\'" . arduino-mode))
+(add-to-list 'auto-mode-alist '("\\.ino\\'" . arduino-mode))
+(register-definition-prefixes "arduino-mode" '("arduino-"))
+
+
+
+(defvar ede-arduino-preferences-file "~/.arduino/preferences.txt" "\
+The location of personl preferences for the arduino IDE.
+Note: If this changes, we need to also update the autoload feature.")
+(custom-autoload 'ede-arduino-preferences-file "ede-arduino" t)
+(eieio-defclass-autoload 'ede-arduino-prefs 'nil "\
+ede-arduino" "Class containing arduino preferences.")
+(eieio-defclass-autoload 'ede-arduino-board 'nil "\
+ede-arduino" "Class for containing key aspect of the arduino board.")
+(autoload 'ede-arduino-root "ede-arduino" "\
+Get the root project directory for DIR.
+The only arduino sketches allowed are those configured by the arduino IDE
+in their sketch directory.
+
+If BASEFILE is non-nil, then convert root to the project basename also.
+
+Consider expanding this at some later date.
+
+(fn &optional DIR BASEFILE)")
+(autoload 'ede-arduino-file "ede-arduino" "\
+Get a file representing the root of this arduino project.
+It is a file ending in .pde or .ino that has the same basename as
+the directory it is in.  Optional argument DIR is the directory
+to check.
+
+(fn &optional DIR)")
+(autoload 'ede-arduino-load "ede-arduino" "\
+Return an Arduino project object if there is one.
+Return nil if there isn't one.
+Argument DIR is the directory it is created for.
+ROOTPROJ is not used, sinc there is only one project for a directory tree.
+
+(fn DIR &optional ROOTPROJ)")
+(require 'ede/auto)
+(add-to-list 'ede-project-class-files (ede-project-autoload :name "Arduino sketch" :file 'ede-arduino :proj-root-dirmatch (ede-project-autoload-dirmatch :fromconfig (expand-file-name ede-arduino-preferences-file) :configregex "^sketchbook.path=\\([^
+]+\\)$" :configregexidx 1) :proj-file 'ede-arduino-file :proj-root 'ede-arduino-root :load-type 'ede-arduino-load :class-sym 'ede-arduino-project :safe-p t :new-p t) t)
+(eieio-defclass-autoload 'ede-arduino-target '(ede-target) "\
+ede-arduino" "EDE Arduino C files target.  Includes PDE, C, C++ and anything else we find.")
+(eieio-defclass-autoload 'ede-arduino-project '(ede-project) "\
+ede-arduino" "EDE Arduino project.")
+(register-definition-prefixes "ede-arduino" '("cedet-arduino-serial-monitor" "ede-arduino"))
+
+
+
+(autoload 'flycheck-arduino-setup "flycheck-arduino" "\
+Setup Flycheck Arduino.
+Add `arduino' to `flycheck-checkers'." t)
+(register-definition-prefixes "flycheck-arduino" '("flycheck-arduino-board"))
+
+
+
+(autoload 'org-babel-execute:arduino "ob-arduino" "\
+org-babel arduino hook.
+
+(fn BODY PARAMS)")
+(with-eval-after-load 'org (add-to-list 'org-src-lang-modes '("arduino" . arduino)) (add-to-list 'org-babel-tangle-lang-exts '("arduino" . "ino")))
+(register-definition-prefixes "ob-arduino" '("ob-arduino:" "org-babel-default-header-args:sclang"))
+
+
+(provide 'arduino-mode-autoloads)
+
+
+)
 (defvar package-activated-list)
 (setq package-activated-list
       (delete-dups
        (append
-        '(yasnippet yasnippet-snippets which-key compat vertico treesit-auto s dash f shrink-path project orderless nodejs-repl nerd-icons nerd-icons-corfu marginalia lua-mode jsonrpc js2-mode js-comint goto-chg general eldoc flymake evil evil-tutor evil-mc evil-goggles annalist evil-collection embark consult embark-consult eglot eat doom-modeline dired-preview corfu bash-completion base16-theme autothemer async)
+        '(yasnippet yasnippet-snippets which-key compat vertico treesit-auto spinner s dash f shrink-path project orderless nodejs-repl nerd-icons nerd-icons-corfu marginalia lua-mode jsonrpc js2-mode js-comint goto-chg general eldoc flymake evil evil-tutor evil-mc evil-goggles annalist evil-collection embark consult embark-consult eglot eat doom-modeline dired-preview corfu bash-completion base16-theme autothemer async arduino-mode)
         package-activated-list)))
 (progn
   (require 'info)
