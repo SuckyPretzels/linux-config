@@ -1156,6 +1156,48 @@ is part of the default mode line beginning with Emacs 30.")
 
 
 )
+(let ((load-true-file-name "/home/pretzels/.emacs.d/elpa/org-superstar-20250914.1308/org-superstar-autoloads.el")(load-file-name "/home/pretzels/.emacs.d/elpa/org-superstar-20250914.1308/org-superstar-autoloads.el"))
+
+
+
+(add-to-list 'load-path (or (and load-file-name (directory-file-name (file-name-directory load-file-name))) (car load-path)))
+
+
+
+
+(put 'org-superstar-leading-bullet 'safe-local-variable #'char-or-string-p)
+(autoload 'org-superstar-toggle-lightweight-lists "org-superstar" "\
+Toggle syntax checking for plain list items.
+
+Disabling syntax checking will cause Org Superstar to display
+lines looking like plain lists (for example in code) like plain
+lists.  However, this may cause significant speedup for org files
+containing several hundred list items." t)
+(autoload 'org-superstar-mode "org-superstar" "\
+Use UTF8 bullets for headlines and plain lists.
+
+This is a minor mode.  If called interactively, toggle the
+`Org-Superstar mode' mode.  If the prefix argument is positive,
+enable the mode, and if it is zero or negative, disable the mode.
+
+If called from Lisp, toggle the mode if ARG is `toggle'.  Enable
+the mode if ARG is nil, omitted, or is a positive number.
+Disable the mode if ARG is a negative number.
+
+To check whether the minor mode is enabled in the current buffer,
+evaluate `org-superstar-mode'.
+
+The mode's hook is called both when the mode is enabled and when
+it is disabled.
+
+(fn &optional ARG)" t)
+(register-definition-prefixes "org-superstar" '("org-superstar-"))
+
+
+(provide 'org-superstar-autoloads)
+
+
+)
 (let ((load-true-file-name "/home/pretzels/.emacs.d/elpa/orderless-1.6/orderless-autoloads.el")(load-file-name "/home/pretzels/.emacs.d/elpa/orderless-1.6/orderless-autoloads.el"))
 
 
@@ -5513,7 +5555,7 @@ org-babel arduino hook.
 (setq package-activated-list
       (delete-dups
        (append
-        '(yasnippet yasnippet-snippets which-key compat vertico treesit-auto spinner s dash f shrink-path project orderless nodejs-repl nerd-icons nerd-icons-corfu marginalia lua-mode jsonrpc js2-mode js-comint goto-chg general eldoc flymake evil evil-tutor evil-mc evil-goggles annalist evil-collection embark consult embark-consult eglot eat doom-modeline dired-preview corfu bash-completion base16-theme autothemer async arduino-mode)
+        '(yasnippet yasnippet-snippets which-key compat vertico treesit-auto spinner s dash f shrink-path project org-superstar orderless nodejs-repl nerd-icons nerd-icons-corfu marginalia lua-mode jsonrpc js2-mode js-comint goto-chg general eldoc flymake evil evil-tutor evil-mc evil-goggles annalist evil-collection embark consult embark-consult eglot eat doom-modeline dired-preview corfu bash-completion base16-theme autothemer async arduino-mode)
         package-activated-list)))
 (progn
   (require 'info)

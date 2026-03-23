@@ -59,7 +59,7 @@
   (font-lock-constant-face    (:foreground gold))
   (font-lock-type-face        (:foreground gold))
   (math-number-face           (:foreground pink))
-  (math-operator-face      (:foreground orange))
+  (math-operator-face      (:foreground fg))
   (eglot-semantic-defaultLibrary (:foreground "#128aed"))
   (eglot-highlight-symbol-face   (:foreground fg-dim))
   (error                      (:foreground red :weight 'bold :underline t))

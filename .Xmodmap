@@ -7,4 +7,4 @@ add Lock = Control_R
 clear Mod1
 clear Mod5
 add Mod1 = Alt_L
-keycode 108 = Menu
+keycode 108 = yen
